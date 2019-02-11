@@ -2,8 +2,8 @@ window.onload = function () {
 
     var wins = 0;
     var losses = 0;
-    var guessed = [];
     var guessesLeft = 7;
+    var guessed = [];
 
     // Computer randomly chooses a letter.
     var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
@@ -22,8 +22,7 @@ window.onload = function () {
             wins++;
             document.getElementById("winsDispl").innerHTML = "Wins: " + wins;
             console.log(wins);
-            // Need to create restart function.
-            // restart();
+            restart();
         } else {
             // Each wrong guess causes "Guesses Left" to decrease by 1.
             losses++;
@@ -35,5 +34,23 @@ window.onload = function () {
         guessed.push(keyPressed);
         document.getElementById("guessedLet").innerHTML = "Guessed Letters: " + guessed;
         console.log(guessed);
-    }
-}
+    };
+
+    // Not working: Restart when there are no more guesses left.
+    if(guessesLeft == 0) {
+        restart();
+    };
+
+    var restart = function() {
+        // Not working: getting the computer to choose a new random letter.
+        chosenLet = alphabet[Math.floor(Math.random() * alphabet.length)];
+        guessesLeft = 7;
+        document.getElementById("guessesRem").innerHTML = "Guesses Left: " + guessesLeft;
+        // Need to not allow the correct letter from previous game to occupy `guessed` array.
+        guessed = [];
+        document.getElementById("guessedLet").innerHTML = "Guessed Letters: ";
+    };
+};
+
+// Need to not allow letter repeats.
+// Need to not allow symbols other than letters. 
