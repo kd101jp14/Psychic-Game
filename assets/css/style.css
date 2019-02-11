@@ -1,0 +1,20 @@
+body {
+    font-family: 'Love Ya Like A Sister', cursive;
+    background-image: url(../images/retina_wood/retina_wood.png);
+    color: #11005c;
+    text-align: center;
+    font-size: 30px;
+}
+.list-group-item {
+   background-color:  rgba(125, 251, 251, 0.28);
+   border: solid 20px #9784ff;
+   border-radius: 250px;
+}
+
+.noDisplay {
+    display: none;
+}
+
+.titleImg {
+    margin-top: 50px;
+}
