@@ -4,8 +4,8 @@ window.onload = function() {
     var guessesLeft = 7;
     var guessed = [];
 
-    var winAudio = new Audio("assets/sound/Positive-game-notification.mp3.");
-    var loseAudio = new Audio("assets/sound/Cartoon-falling-down-stairs.mp3.");
+    var winAudio = new Audio("assets/sound/Positive-game-notification.mp3");
+    var loseAudio = new Audio("assets/sound/Cartoon-falling-down-stairs.mp3");
 
     // Computer randomly chooses a letter.
     var alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
