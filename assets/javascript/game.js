@@ -25,25 +25,27 @@ window.onload = function () {
             restart();
         } else {
             // Each wrong guess causes "Guesses Left" to decrease by 1.
-            losses++;
-            document.getElementById("lossesDispl").innerHTML = "Losses: " + losses;
             guessesLeft--;
             document.getElementById("guessesRem").innerHTML = "Guesses Left: " + guessesLeft;
             console.log(guessesLeft);
+            guessed.push(" " + keyPressed);
+            document.getElementById("guessedLet").innerHTML = "Guessed Letters: " + guessed;
+            console.log(guessed);
         }
-        guessed.push(keyPressed);
-        document.getElementById("guessedLet").innerHTML = "Guessed Letters: " + guessed;
-        console.log(guessed);
+
+        if (guessesLeft == 0) {
+            losses++;
+            document.getElementById("lossesDispl").innerHTML = "Losses: " + losses;
+            console.log(losses);
+            restart();
+        };
+
     };
 
-    // Not working: Restart when there are no more guesses left.
-    if(guessesLeft == 0) {
-        restart();
-    };
-
-    var restart = function() {
+    var restart = function () {
         // Not working: getting the computer to choose a new random letter.
         chosenLet = alphabet[Math.floor(Math.random() * alphabet.length)];
+        console.log(chosenLet);
         guessesLeft = 7;
         document.getElementById("guessesRem").innerHTML = "Guesses Left: " + guessesLeft;
         // Need to not allow the correct letter from previous game to occupy `guessed` array.
@@ -53,4 +55,4 @@ window.onload = function () {
 };
 
 // Need to not allow letter repeats.
-// Need to not allow symbols other than letters. 
+// Need to not allow symbols other than letters.
