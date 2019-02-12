@@ -1,4 +1,4 @@
-window.onload = function () {
+window.onload = function() {
 
     var wins = 0;
     var losses = 0;
@@ -23,7 +23,7 @@ window.onload = function () {
         // User's guess is compared to chosen letter.
         if (event.keyCode >= 65 && event.keyCode <= 90) {
 
-            var restart = function () {
+            var restart = function() {
                 // Not working: getting the computer to choose a new random letter.
                 chosenLet = alphabet[Math.floor(Math.random() * alphabet.length)];
                 console.log(chosenLet);
@@ -32,7 +32,7 @@ window.onload = function () {
                 // Need to not allow the correct letter from previous game to occupy `guessed` array.
                 guessed = [];
                 document.getElementById("guessedLet").innerHTML = "Guessed Letters: ";
-            };
+            }
 
             if (keyPressed == chosenLet) {
                 wins++;
@@ -40,29 +40,26 @@ window.onload = function () {
                 winAudio.play();
                 console.log(wins);
                 restart();
-            } else {
+                
+                // *FIX ISSUE: Stop repeat use of letters. Always returns -1. For loop?
+            } else if (guessed.indexOf(keyPressed) === -1) {
+                console.log(guessed.indexOf(keyPressed));
                 // Each wrong guess causes "Guesses Left" to decrease by 1.
                 guessesLeft--;
                 document.getElementById("guessesRem").innerHTML = "Guesses Left: " + guessesLeft;
                 console.log(guessesLeft);
                 guessed.push(" " + keyPressed);
-                for (var i = 0; i < guessed.length; i++) {
-                    if (keyPressed != guessed.indexOf(i)) {
-                        document.getElementById("guessedLet").innerHTML = "Guessed Letters: " + guessed;
-                        console.log(guessed);
-                    }
-                }
-            };
+                document.getElementById("guessedLet").innerHTML = "Guessed Letters: " + guessed;
+                console.log(guessed);
+            }
+        };
 
-            if (guessesLeft == 0) {
-                losses++;
-                document.getElementById("lossesDispl").innerHTML = "Losses: " + losses;
-                loseAudio.play();
-                console.log(losses);
-                restart();
-            };
+        if (guessesLeft == 0) {
+            losses++;
+            document.getElementById("lossesDispl").innerHTML = "Losses: " + losses;
+            loseAudio.play();
+            console.log(losses);
+            restart();
         };
     };
 };
-    // Need to not allow letter repeats.
-    // Need to not allow symbols other than letters. (Completed)
